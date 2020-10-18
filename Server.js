@@ -107,17 +107,16 @@ app.post('/deleteuser', async (req, res) => {
 
 // UPDATE existing user record
 app.post('/updateuser', (req, res)=> {
-  User.findByIdAndUpdate(req.body.id, {
-    name: req.body.name,
+  User.findByIdAndUpdate(req.body.userId, {
+    username: req.body.username,
     email: req.body.email,
     phone: req.body.phone,
     password: req.body.password
   })
-  .then(data => {
-    res.send('Updated User: ' + req.body.name)
-  })
+  .then(res.send({"message" : "Updated user: " + req.body.username}))
   .catch(err => {
     console.log(err);
   })
 })
+
 
