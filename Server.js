@@ -8,9 +8,6 @@ require ("./models/User");
 const app = express();
 const PORT = 5000;
 
-require('dns').lookup(require('os').hostname(), function (err, add, fam) {
-  console.log('addr: '+add);
-});
 
 //Body Parser Middleware
 app.use(bodyParser.json());
