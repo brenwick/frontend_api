@@ -11,6 +11,7 @@ const PORT = 5000;
 
 //Body Parser Middleware
 app.use(bodyParser.json());
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 
