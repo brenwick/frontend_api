@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front End API</title>
+</head>
+<body>
+    <h1>HEllo :D Welcome to the Front End!</h1>
+    <br>
+    <h3><strong>/get_all_users</strong></h3>
+    <p>Returns all user data (currently insecure for testing only)</p>
+    <br>
+    <br>
+    <h3><strong>/create_user</strong></h3>
+    <p>Creates a user given the following parameters:</p>
+    <h4>Example:</h4>
+    <p>{</p>
+        <p>"username" : "brenwick"</p>
+        <p>"email" : "email@hi.com"</p>
+        <p>"phone" : "123-4567"</p>
+        <p>"password" : "notapassword"</p>
+        <p>"retypePassword" : "notapassword"</p>
+    <p>}</p>
+    <br>
+    <br>
+    <h3><strong>/login</strong></h3>
+    <p>"Logs in User" if password sent matches one in Database</p>
+    <h4>Example:</h4>
+    <p>{</p>
+        <p>"id" : "5f8f7d2d1dba2312101e01b5"</p>
+        <p>"password" : "01234"</p>
+    <p>}</p>
+    
+</body>
+</html>
