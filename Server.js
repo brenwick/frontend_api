@@ -148,16 +148,16 @@ app.post('/login', async (req, res) => {
         res.send({ token })
       }
       else {
-        res.send('Error: username or password did not match')
+        res.status(401);
       }
     }
     catch(error){
-      res.send('Error: username or password did not match');
+      res.status(401);
       console.log(error);
     } 
   }
   else {
-    res.send('Error: Please include user id and password in request body');
+    res.status(401);
   }
 });
 
