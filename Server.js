@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const jwt = require('jsonwebtoken');
 // No variable assignment since User is not exported
 require ("./models/User");
 //Local constants
@@ -84,9 +85,8 @@ app.post('/create_user', (req, res) => {
       });
       newUser.save()
       .then(data => {
-        res.json({
-          "message" : "Successfully added user to database"
-        })
+        const token = jwt.sign({ userId: newUser._id }, 'MY_SECRET_KEY');
+        res.send({ token })
       }).catch(err => {
         console.log(err);
         res.json({
@@ -136,7 +136,7 @@ app.post('/create_user', (req, res) => {
 
 
 // Obtain JSON Web Token
-app.get('/login', async (req, res) => {
+app.post('/login', async (req, res) => {
 
   if(req.body.password && req.body.id) {
     password = req.body.password;
