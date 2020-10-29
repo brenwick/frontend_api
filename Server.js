@@ -89,17 +89,15 @@ app.post('/create_user', (req, res) => {
         res.send({ token })
       }).catch(err => {
         console.log(err);
-        res.json({
-          "error" : "server error"
-        });
+        res.status(422).send({error: 'Server Error'});
     });
     }
     else{
-      res.send('Error: Passwords did not match')
+      res.status(422).send({error: 'Passwords do not match'});
     }
   }
   else {
-    res.send('Error: please include username, email, phone, password, and retype-password in JSON format');
+    res.status(422).send({error: 'Error: please include username, email, phone, password, and retype-password in JSON format'});
   }
 });
 
