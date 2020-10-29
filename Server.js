@@ -138,16 +138,17 @@ app.post('/create_user', (req, res) => {
 // Obtain JSON Web Token
 app.post('/login', async (req, res) => {
 
-  if(req.body.password && req.body.id) {
+  if(req.body.password && req.body.email) {
     password = req.body.password;
-    id = req.body.id;
+    email = req.body.email;
     try{
-      const user = await User.findById(id);
+      const user = await User.findOne({ email: email });
       if(password === user.password) {
-        res.send('User Logged In');
+        const token = jwt.sign({ userId: user._id }, 'MY_SECRET_KEY');
+        res.send({ token })
       }
       else {
-        res.send('Error: Password did not match')
+        res.send('Error: username or password did not match')
       }
     }
     catch(error){
